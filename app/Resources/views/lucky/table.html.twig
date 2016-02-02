@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Change List ID</th>
+            <th>User Name</th>
+            <th>Job Name</th>
+            <th>Job ID</th>
+        </tr>
+
+        {% for row in tableValues %}
+            <tr>
+                <td>{{ row.id }}</td>
+                <td>{{ row.changeListId }}</td>
+                <td>{{ row.userName }}</td>
+                <td>{{ row.jobName }}</td>
+                <td>{{ row.jobId }}</td>
+                <td>{{ row.aggrStartTime | date('Y-m-d H:i:s') }}</td>
+                <td>{{ row.aggrEndTime | date('Y-m-d H:i:s') }}</td>
+                <td>{{ row.aggrOutcome }}</td>
+
+                {% if row.serialStartTime == null %}
+                    <td>null</td>
+                {% else %}
+                    <td>{{ row.serialStartTime | date('Y-m-d H:i:s') }}</td>
+                {% endif %}
+
+                {% if row.serialEndTime == null %}
+                    <td>null</td>
+                {% else %}
+                    <td>{{ row.serialEndTime | date('Y-m-d H:i:s') }}</td>
+                {% endif %}
+
+                <td>{{ row.serialOutcome }}</td>
+
+                {% if row.submitStartTime == null %}
+                    <td>null</td>
+                {% else %}
+                    <td>{{ row.submitStartTime | date('Y-m-d H:i:s') }}</td>
+                {% endif %}
+
+                {% if row.submitEndTime == null %}
+                    <td>null</td>
+                {% else %}
+                    <td>{{ row.submitEndTime | date('Y-m-d H:i:s') }}</td>
+                {% endif %}
+
+                <td>{{ row.submitOutcome }}</td>
+            </tr>
+        {% endfor %}
+
+    </table>
+
+{% endblock %}
